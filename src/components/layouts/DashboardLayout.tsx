@@ -1,4 +1,3 @@
-
 import { ReactNode, useState } from 'react';
 import {
   Sidebar,
@@ -26,7 +25,7 @@ const DashboardLayout = ({ children, title, subtitle }: DashboardLayoutProps) =>
   const [collapsed, setCollapsed] = useState(false);
   
   return (
-    <SidebarProvider defaultCollapsed={false} onCollapsedChange={setCollapsed}>
+    <SidebarProvider>
       <div className="min-h-screen flex w-full">
         <DashboardSidebar />
         
