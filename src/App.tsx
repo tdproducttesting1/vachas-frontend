@@ -11,6 +11,11 @@ import NotFound from "./pages/NotFound";
 import PricingPage from "./pages/PricingPage";
 import BlogsPage from "./pages/BlogsPage";
 import DocumentationPage from "./pages/DocumentationPage";
+import HowItWorksPage from "./pages/HowItWorksPage";
+import AboutUsPage from "./pages/AboutUsPage";
+import SupportCenterPage from "./pages/SupportCenterPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import TermsOfServicePage from "./pages/TermsOfServicePage";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +32,11 @@ const App = () => (
           <Route path="/pricing" element={<PricingPage />} />
           <Route path="/blogs" element={<BlogsPage />} />
           <Route path="/docs" element={<DocumentationPage />} />
+          <Route path="/how-it-works" element={<HowItWorksPage />} />
+          <Route path="/about" element={<AboutUsPage />} />
+          <Route path="/support" element={<SupportCenterPage />} />
+          <Route path="/privacy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms" element={<TermsOfServicePage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

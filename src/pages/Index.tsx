@@ -1,9 +1,11 @@
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, Facebook, Instagram, Linkedin, Twitter, Mail } from 'lucide-react';
 import DashboardPreviewImage from '@/components/landing/DashboardPreviewImage';
 import { Separator } from '@/components/ui/separator';
+import ComplianceBadges from '@/components/ComplianceBadges';
 
 const Index = () => {
   const navigate = useNavigate();
@@ -33,7 +35,7 @@ const Index = () => {
             <Link to="/#how-it-works" className="text-sm font-medium hover:text-primary transition-colors">How It Works</Link>
             <Link to="/pricing" className="text-sm font-medium hover:text-primary transition-colors">Pricing</Link>
             <Link to="/blogs" className="text-sm font-medium hover:text-primary transition-colors">Blog</Link>
-            <Link to="/docs" className="text-sm font-medium hover:text-primary transition-colors">Docs</Link>
+            <Link to="/docs" className="text-sm font-medium hover:text-primary transition-colors">Documentation</Link>
           </div>
           <Button onClick={handleGetStarted} disabled={isLoading}>
             {isLoading ? 'Loading...' : 'Get Started'}
@@ -215,8 +217,8 @@ const Index = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/docs" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    Tutorials
+                  <Link to="/how-it-works" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    How It Works
                   </Link>
                 </li>
                 <li>
@@ -230,7 +232,7 @@ const Index = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/docs" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Link to="/support" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     Support Center
                   </Link>
                 </li>
@@ -242,7 +244,7 @@ const Index = () => {
               <h3 className="font-medium text-base mb-3">Company</h3>
               <ul className="space-y-2">
                 <li>
-                  <Link to="/docs" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Link to="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     About Us
                   </Link>
                 </li>
@@ -252,22 +254,27 @@ const Index = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/docs" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Link to="/support" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     Contact
                   </Link>
                 </li>
                 <li>
-                  <Link to="/docs" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Link to="/privacy" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     Privacy Policy
                   </Link>
                 </li>
                 <li>
-                  <Link to="/docs" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Link to="/terms" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     Terms of Service
                   </Link>
                 </li>
               </ul>
             </div>
+          </div>
+          
+          {/* Compliance Badges */}
+          <div className="mb-8">
+            <ComplianceBadges />
           </div>
           
           <Separator className="mb-8" />
