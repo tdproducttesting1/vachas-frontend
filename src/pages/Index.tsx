@@ -2,8 +2,9 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Facebook, Instagram, Linkedin, Twitter, Mail } from 'lucide-react';
 import DashboardPreviewImage from '@/components/landing/DashboardPreviewImage';
+import { Separator } from '@/components/ui/separator';
 
 const Index = () => {
   const navigate = useNavigate();
@@ -137,27 +138,149 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-10 px-6 md:px-8 border-t">
+      <footer className="py-10 px-6 md:px-8 border-t bg-muted/30">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center gap-2 mb-6 md:mb-0">
-              <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">T</span>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-8">
+            {/* Company */}
+            <div>
+              <div className="flex items-center gap-2 mb-6">
+                <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
+                  <span className="text-primary-foreground font-bold text-lg">T</span>
+                </div>
+                <h2 className="text-xl font-heading font-bold">Tarang AI</h2>
               </div>
-              <h2 className="text-xl font-heading font-bold">Tarang AI</h2>
+              <p className="text-sm text-muted-foreground mb-4">
+                Automate voice communications and boost customer engagement with our AI-powered platform.
+              </p>
+              <div className="flex items-center gap-3">
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Facebook size={18} />
+                  <span className="sr-only">Facebook</span>
+                </a>
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Twitter size={18} />
+                  <span className="sr-only">Twitter</span>
+                </a>
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Instagram size={18} />
+                  <span className="sr-only">Instagram</span>
+                </a>
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Linkedin size={18} />
+                  <span className="sr-only">LinkedIn</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Products */}
+            <div>
+              <h3 className="font-medium text-base mb-3">Products</h3>
+              <ul className="space-y-2">
+                <li>
+                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    Voice AI
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    Campaign Manager
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    Analytics Dashboard
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    CRM Integration
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    API & Webhooks
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Resources */}
+            <div>
+              <h3 className="font-medium text-base mb-3">Resources</h3>
+              <ul className="space-y-2">
+                <li>
+                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    Documentation
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    Tutorials
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    Blog
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    Case Studies
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    Support Center
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Company */}
+            <div>
+              <h3 className="font-medium text-base mb-3">Company</h3>
+              <ul className="space-y-2">
+                <li>
+                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    About Us
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    Careers
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    Contact
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    Privacy Policy
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    Terms of Service
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <Separator className="mb-8" />
+          
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="mb-4 md:mb-0">
+              <p className="text-sm text-muted-foreground">
+                © {new Date().getFullYear()} Tarang AI. All rights reserved.
+              </p>
             </div>
             <div className="flex items-center gap-6">
-              <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Terms
-              </a>
-              <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Privacy
-              </a>
-              <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Contact
-              </a>
-              <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                © {new Date().getFullYear()}
+              <a href="mailto:info@tarangai.com" className="text-sm flex items-center gap-1 text-muted-foreground hover:text-primary transition-colors">
+                <Mail size={14} />
+                <span>info@tarangai.com</span>
               </a>
             </div>
           </div>
