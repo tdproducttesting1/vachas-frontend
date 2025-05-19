@@ -8,6 +8,9 @@ import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
 import CampaignsPage from "./pages/CampaignsPage";
 import NotFound from "./pages/NotFound";
+import PricingPage from "./pages/PricingPage";
+import BlogsPage from "./pages/BlogsPage";
+import DocumentationPage from "./pages/DocumentationPage";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +24,9 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/campaigns" element={<CampaignsPage />} />
+          <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/blogs" element={<BlogsPage />} />
+          <Route path="/docs" element={<DocumentationPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

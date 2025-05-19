@@ -1,7 +1,6 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, Facebook, Instagram, Linkedin, Twitter, Mail } from 'lucide-react';
 import DashboardPreviewImage from '@/components/landing/DashboardPreviewImage';
 import { Separator } from '@/components/ui/separator';
@@ -30,9 +29,11 @@ const Index = () => {
             <h1 className="text-xl font-heading font-bold">Tarang AI</h1>
           </div>
           <div className="hidden md:flex items-center gap-6">
-            <a href="#features" className="text-sm font-medium hover:text-primary transition-colors">Features</a>
-            <a href="#how-it-works" className="text-sm font-medium hover:text-primary transition-colors">How It Works</a>
-            <a href="#pricing" className="text-sm font-medium hover:text-primary transition-colors">Pricing</a>
+            <Link to="/#features" className="text-sm font-medium hover:text-primary transition-colors">Features</Link>
+            <Link to="/#how-it-works" className="text-sm font-medium hover:text-primary transition-colors">How It Works</Link>
+            <Link to="/pricing" className="text-sm font-medium hover:text-primary transition-colors">Pricing</Link>
+            <Link to="/blogs" className="text-sm font-medium hover:text-primary transition-colors">Blog</Link>
+            <Link to="/docs" className="text-sm font-medium hover:text-primary transition-colors">Docs</Link>
           </div>
           <Button onClick={handleGetStarted} disabled={isLoading}>
             {isLoading ? 'Loading...' : 'Get Started'}
@@ -177,29 +178,29 @@ const Index = () => {
               <h3 className="font-medium text-base mb-3">Products</h3>
               <ul className="space-y-2">
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Link to="/pricing" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     Voice AI
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Link to="/campaigns" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     Campaign Manager
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Link to="/dashboard" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     Analytics Dashboard
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Link to="/docs" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     CRM Integration
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Link to="/docs" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     API & Webhooks
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -209,29 +210,29 @@ const Index = () => {
               <h3 className="font-medium text-base mb-3">Resources</h3>
               <ul className="space-y-2">
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Link to="/docs" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     Documentation
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Link to="/docs" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     Tutorials
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Link to="/blogs" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     Blog
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Link to="/blogs" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     Case Studies
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Link to="/docs" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     Support Center
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -241,29 +242,29 @@ const Index = () => {
               <h3 className="font-medium text-base mb-3">Company</h3>
               <ul className="space-y-2">
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Link to="/docs" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     About Us
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Link to="/blogs" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     Careers
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Link to="/docs" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     Contact
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Link to="/docs" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     Privacy Policy
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Link to="/docs" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     Terms of Service
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
