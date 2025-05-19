@@ -14,9 +14,9 @@ const BlogsPage = () => {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">T</span>
+              <span className="text-primary-foreground font-bold text-lg">V</span>
             </div>
-            <h1 className="text-xl font-heading font-bold">Tarang AI</h1>
+            <h1 className="text-xl font-heading font-bold">Vachas AI</h1>
           </Link>
           <div className="hidden md:flex items-center gap-6">
             <Link to="/" className="text-sm font-medium hover:text-primary transition-colors">Home</Link>
@@ -35,7 +35,7 @@ const BlogsPage = () => {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-12">
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">Tarang AI Blog</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">Vachas AI Blog</h1>
               <p className="text-xl text-muted-foreground max-w-2xl">
                 Insights on AI voice technology, customer engagement, and business communication
               </p>
@@ -110,7 +110,7 @@ const BlogsPage = () => {
       <footer className="py-10 px-6 md:px-8 border-t bg-muted/30">
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Tarang AI. All rights reserved.
+            © {new Date().getFullYear()} Vachas AI. All rights reserved.
           </p>
           <div className="flex justify-center mt-4 gap-4">
             <Link to="/" className="text-sm hover:text-primary transition-colors">Home</Link>

@@ -13,9 +13,9 @@ const AboutUsPage = () => {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">T</span>
+              <span className="text-primary-foreground font-bold text-lg">V</span>
             </div>
-            <h1 className="text-xl font-heading font-bold">Tarang AI</h1>
+            <h1 className="text-xl font-heading font-bold">Vachas AI</h1>
           </Link>
           <div className="hidden md:flex items-center gap-6">
             <Link to="/" className="text-sm font-medium hover:text-primary transition-colors">Home</Link>
@@ -34,7 +34,7 @@ const AboutUsPage = () => {
       <section className="py-16 md:py-24 px-6 md:px-8 bg-muted/30">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">About Tarang AI</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">About Vachas AI</h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Revolutionizing voice communications with artificial intelligence
             </p>
@@ -49,7 +49,7 @@ const AboutUsPage = () => {
             <div className="w-full md:w-1/2">
               <h2 className="text-3xl font-bold mb-4">Our Mission</h2>
               <p className="text-lg text-muted-foreground mb-6">
-                At Tarang AI, we believe that the future of business communication lies in intelligent, 
+                At Vachas AI, we believe that the future of business communication lies in intelligent, 
                 conversational AI that enhances human capabilities rather than replacing them. Our mission 
                 is to democratize access to advanced voice AI technology, enabling businesses of all sizes 
                 to deliver exceptional customer experiences at scale.
@@ -96,7 +96,7 @@ const AboutUsPage = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Meet Our Team</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              The passionate people behind Tarang AI
+              The passionate people behind Vachas AI
             </p>
           </div>
           
@@ -120,7 +120,7 @@ const AboutUsPage = () => {
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Join Us on Our Journey</h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Partner with Tarang AI to transform your customer communications
+            Partner with Vachas AI to transform your customer communications
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <Button size="lg" variant="secondary" className="text-primary">
@@ -137,7 +137,7 @@ const AboutUsPage = () => {
       <footer className="py-10 px-6 md:px-8 border-t bg-muted/30">
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Tarang AI. All rights reserved.
+            © {new Date().getFullYear()} Vachas AI. All rights reserved.
           </p>
           <div className="flex justify-center mt-4 gap-4">
             <Link to="/" className="text-sm hover:text-primary transition-colors">Home</Link>

@@ -26,9 +26,9 @@ const Index = () => {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">T</span>
+              <span className="text-primary-foreground font-bold text-lg">V</span>
             </div>
-            <h1 className="text-xl font-heading font-bold">Tarang AI</h1>
+            <h1 className="text-xl font-heading font-bold">Vachas AI</h1>
           </div>
           <div className="hidden md:flex items-center gap-6">
             <Link to="/#features" className="text-sm font-medium hover:text-primary transition-colors">Features</Link>
@@ -99,7 +99,7 @@ const Index = () => {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">How It Works</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Tarang AI simplifies the entire voice calling workflow
+              Vachas AI simplifies the entire voice calling workflow
             </p>
           </div>
 
@@ -125,7 +125,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Call Operations?</h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Join leading businesses using Tarang AI to automate calls, improve customer experience, and boost conversions.
+            Join leading businesses using Vachas AI to automate calls, improve customer experience, and boost conversions.
           </p>
           <Button
             size="lg"
@@ -148,9 +148,9 @@ const Index = () => {
             <div>
               <div className="flex items-center gap-2 mb-6">
                 <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold text-lg">T</span>
+                  <span className="text-primary-foreground font-bold text-lg">V</span>
                 </div>
-                <h2 className="text-xl font-heading font-bold">Tarang AI</h2>
+                <h2 className="text-xl font-heading font-bold">Vachas AI</h2>
               </div>
               <p className="text-sm text-muted-foreground mb-4">
                 Automate voice communications and boost customer engagement with our AI-powered platform.
@@ -282,13 +282,13 @@ const Index = () => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
               <p className="text-sm text-muted-foreground">
-                © {new Date().getFullYear()} Tarang AI. All rights reserved.
+                © {new Date().getFullYear()} Vachas AI. All rights reserved.
               </p>
             </div>
             <div className="flex items-center gap-6">
-              <a href="mailto:info@tarangai.com" className="text-sm flex items-center gap-1 text-muted-foreground hover:text-primary transition-colors">
+              <a href="mailto:info@vachasai.com" className="text-sm flex items-center gap-1 text-muted-foreground hover:text-primary transition-colors">
                 <Mail size={14} />
-                <span>info@tarangai.com</span>
+                <span>info@vachasai.com</span>
               </a>
             </div>
           </div>
