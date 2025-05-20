@@ -5,7 +5,7 @@ import {
   PhoneCall, 
   MessageSquare, 
   Package, 
-  Tools,
+  Wrench,
   CalendarDays,
   CreditCard,
   Phone,
@@ -67,7 +67,7 @@ const DashboardPreviewImage = () => {
               <Package className="h-5 w-5 text-foreground/60" />
             </div>
             <div className="h-10 w-10 rounded bg-sidebar-primary/20 mb-2 flex items-center justify-center">
-              <Tools className="h-5 w-5 text-foreground/60" />
+              <Wrench className="h-5 w-5 text-foreground/60" />
             </div>
           </div>
           
