@@ -13,7 +13,8 @@ import {
   Book,
   Database,
   Flag,
-  BarChart
+  BarChart,
+  UserCircle
 } from 'lucide-react';
 
 const DashboardPreviewImage = () => {
@@ -52,27 +53,41 @@ const DashboardPreviewImage = () => {
         
         {/* Main content */}
         <div className="flex flex-1 gap-4">
-          {/* Sidebar with smaller icons and text labels */}
-          <div className="w-[120px] bg-sidebar rounded-md p-2 flex flex-col gap-2">
-            <div className="h-8 w-full rounded bg-sidebar-primary/20 mb-1 flex items-center px-2">
-              <Activity className="h-4 w-4 text-primary/80 mr-2" />
-              <span className="text-[9px] font-medium text-foreground/80">Analytics</span>
+          {/* Sidebar with smaller icons and text labels with better visibility */}
+          <div className="w-[120px] bg-sidebar rounded-md p-2 flex flex-col gap-2 justify-between">
+            <div className="flex flex-col gap-2">
+              <div className="h-8 w-full rounded bg-sidebar-primary/20 mb-1 flex items-center px-2">
+                <Activity className="h-4 w-4 text-white mr-2" />
+                <span className="text-[8px] font-medium text-white">Analytics</span>
+              </div>
+              <div className="h-8 w-full rounded bg-sidebar-primary/20 mb-1 flex items-center px-2">
+                <PhoneCall className="h-4 w-4 text-white mr-2" />
+                <span className="text-[8px] font-medium text-white">Calls</span>
+              </div>
+              <div className="h-8 w-full rounded bg-primary/20 mb-1 flex items-center px-2">
+                <Mic className="h-4 w-4 text-white mr-2" />
+                <span className="text-[8px] font-medium text-white">Dialogue Flows</span>
+              </div>
+              <div className="h-8 w-full rounded bg-sidebar-primary/20 mb-1 flex items-center px-2">
+                <Package className="h-4 w-4 text-white mr-2" />
+                <span className="text-[8px] font-medium text-white">Campaigns</span>
+              </div>
+              <div className="h-8 w-full rounded bg-sidebar-primary/20 mb-1 flex items-center px-2">
+                <Wrench className="h-4 w-4 text-white mr-2" />
+                <span className="text-[8px] font-medium text-white">Settings</span>
+              </div>
             </div>
-            <div className="h-8 w-full rounded bg-sidebar-primary/20 mb-1 flex items-center px-2">
-              <PhoneCall className="h-4 w-4 text-foreground/60 mr-2" />
-              <span className="text-[9px] font-medium text-foreground/80">Calls</span>
-            </div>
-            <div className="h-8 w-full rounded bg-primary/20 mb-1 flex items-center px-2">
-              <MessageSquare className="h-4 w-4 text-foreground/60 mr-2" />
-              <span className="text-[9px] font-medium text-foreground/80">Dialogue</span>
-            </div>
-            <div className="h-8 w-full rounded bg-sidebar-primary/20 mb-1 flex items-center px-2">
-              <Package className="h-4 w-4 text-foreground/60 mr-2" />
-              <span className="text-[9px] font-medium text-foreground/80">Campaigns</span>
-            </div>
-            <div className="h-8 w-full rounded bg-sidebar-primary/20 mb-1 flex items-center px-2">
-              <Wrench className="h-4 w-4 text-foreground/60 mr-2" />
-              <span className="text-[9px] font-medium text-foreground/80">Settings</span>
+            
+            {/* Credits and profile at the bottom */}
+            <div className="mt-2">
+              <div className="h-8 w-full rounded bg-sidebar-primary/10 mb-2 flex items-center justify-center">
+                <CreditCard className="h-3 w-3 text-white/80 mr-1" />
+                <span className="text-[7px] font-medium text-white/80">Credits: 2,500</span>
+              </div>
+              <div className="h-10 w-full rounded bg-sidebar-primary/20 flex flex-col items-center justify-center gap-1 group cursor-pointer">
+                <UserCircle className="h-5 w-5 text-white" />
+                <span className="text-[6px] font-medium text-white/80">Profile Settings</span>
+              </div>
             </div>
           </div>
           
