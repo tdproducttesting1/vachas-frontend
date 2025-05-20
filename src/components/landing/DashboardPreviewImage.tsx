@@ -52,22 +52,27 @@ const DashboardPreviewImage = () => {
         
         {/* Main content */}
         <div className="flex flex-1 gap-4">
-          {/* Sidebar inspired by the uploaded screenshot */}
-          <div className="w-[80px] bg-sidebar rounded-md p-2 flex flex-col items-center gap-2">
-            <div className="h-10 w-10 rounded bg-sidebar-primary/20 mb-2 flex items-center justify-center">
-              <Activity className="h-5 w-5 text-primary/80" />
+          {/* Sidebar with smaller icons and text labels */}
+          <div className="w-[120px] bg-sidebar rounded-md p-2 flex flex-col gap-2">
+            <div className="h-8 w-full rounded bg-sidebar-primary/20 mb-1 flex items-center px-2">
+              <Activity className="h-4 w-4 text-primary/80 mr-2" />
+              <span className="text-[9px] font-medium text-foreground/80">Analytics</span>
             </div>
-            <div className="h-10 w-10 rounded bg-sidebar-primary/20 mb-2 flex items-center justify-center">
-              <PhoneCall className="h-5 w-5 text-foreground/60" />
+            <div className="h-8 w-full rounded bg-sidebar-primary/20 mb-1 flex items-center px-2">
+              <PhoneCall className="h-4 w-4 text-foreground/60 mr-2" />
+              <span className="text-[9px] font-medium text-foreground/80">Calls</span>
             </div>
-            <div className="h-10 w-10 rounded bg-primary/20 mb-2 flex items-center justify-center">
-              <MessageSquare className="h-5 w-5 text-foreground/60" />
+            <div className="h-8 w-full rounded bg-primary/20 mb-1 flex items-center px-2">
+              <MessageSquare className="h-4 w-4 text-foreground/60 mr-2" />
+              <span className="text-[9px] font-medium text-foreground/80">Dialogue</span>
             </div>
-            <div className="h-10 w-10 rounded bg-sidebar-primary/20 mb-2 flex items-center justify-center">
-              <Package className="h-5 w-5 text-foreground/60" />
+            <div className="h-8 w-full rounded bg-sidebar-primary/20 mb-1 flex items-center px-2">
+              <Package className="h-4 w-4 text-foreground/60 mr-2" />
+              <span className="text-[9px] font-medium text-foreground/80">Campaigns</span>
             </div>
-            <div className="h-10 w-10 rounded bg-sidebar-primary/20 mb-2 flex items-center justify-center">
-              <Wrench className="h-5 w-5 text-foreground/60" />
+            <div className="h-8 w-full rounded bg-sidebar-primary/20 mb-1 flex items-center px-2">
+              <Wrench className="h-4 w-4 text-foreground/60 mr-2" />
+              <span className="text-[9px] font-medium text-foreground/80">Settings</span>
             </div>
           </div>
           
