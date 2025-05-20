@@ -10,6 +10,7 @@ import ComplianceBadges from '@/components/ComplianceBadges';
 const Index = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
 
   const handleGetStarted = () => {
     setIsLoading(true);
@@ -69,53 +70,73 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Features Section - modernized with animations and interactivity */}
       <section id="features" className="py-16 md:py-24 px-6 md:px-8 bg-muted/30">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Powerful AI Calling Features</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 relative inline-block after:absolute after:h-1 after:bg-primary after:w-1/2 after:-bottom-2 after:left-1/4">
+              Powerful AI Calling Features
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto mt-6">
               Everything you need to automate and optimize your voice communications
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <div key={index} className="bg-card rounded-xl p-6 border shadow-sm hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+              <div 
+                key={index} 
+                className="bg-card rounded-xl p-6 border transition-all duration-300 transform hover:shadow-lg hover:-translate-y-1 relative overflow-hidden group"
+                onMouseEnter={() => setHoveredFeature(index)}
+                onMouseLeave={() => setHoveredFeature(null)}
+              >
+                <div 
+                  className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                ></div>
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors duration-300">
                   <span className="text-primary text-xl font-bold">{index + 1}</span>
                 </div>
-                <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">{feature.title}</h3>
+                <p className="text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300">{feature.description}</p>
+                <div className="h-1 w-0 bg-primary mt-4 transition-all duration-300 group-hover:w-16"></div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* How It Works Section */}
-      <section id="how-it-works" className="py-16 md:py-24 px-6 md:px-8">
+      {/* How It Works Section - modernized with cleaner design */}
+      <section id="how-it-works" className="py-16 md:py-24 px-6 md:px-8 relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">How It Works</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 relative inline-block after:absolute after:h-1 after:bg-primary after:w-1/2 after:-bottom-2 after:left-1/4">
+              How It Works
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto mt-6">
               Vachas AI simplifies the entire voice calling workflow
             </p>
           </div>
 
-          <div className="relative">
-            <div className="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-primary/20 -translate-y-1/2 z-0"></div>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
-              {steps.map((step, index) => (
-                <div key={index} className="flex flex-col items-center text-center">
-                  <div className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center mb-4 font-bold">
-                    {index + 1}
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">{step.title}</h3>
+          <div className="flex flex-col md:flex-row gap-6 md:gap-0 relative">
+            {/* Clean line connecting steps */}
+            <div className="hidden md:block absolute top-16 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-transparent via-primary/40 to-transparent"></div>
+            
+            {steps.map((step, index) => (
+              <div key={index} className="flex-1 flex flex-col items-center text-center relative">
+                <div className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center mb-6 font-bold z-10 shadow-md">
+                  {index + 1}
+                </div>
+                <div className="p-5 rounded-lg border bg-card hover:shadow-md transition-shadow duration-300 w-full">
+                  <h3 className="text-xl font-bold mb-3">{step.title}</h3>
                   <p className="text-muted-foreground">{step.description}</p>
                 </div>
-              ))}
-            </div>
+                {index < steps.length - 1 && (
+                  <div className="hidden md:block absolute top-16 right-0 transform translate-x-1/2 z-10">
+                    <ArrowRight className="h-4 w-4 text-primary" />
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>

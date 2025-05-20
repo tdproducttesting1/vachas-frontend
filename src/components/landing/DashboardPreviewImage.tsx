@@ -41,7 +41,7 @@ const DashboardPreviewImage = () => {
             <div className="h-5 w-5 rounded bg-primary flex items-center justify-center">
               <span className="text-white text-xs font-semibold">V</span>
             </div>
-            <div className="h-3 w-24 rounded text-[7px] font-medium text-foreground/90 flex items-center">
+            <div className="text-[7px] font-medium text-foreground/90 flex items-center">
               Vachas AI Dashboard
             </div>
           </div>
@@ -57,42 +57,42 @@ const DashboardPreviewImage = () => {
         
         {/* Main content - more compact with proper containment */}
         <div className="flex flex-1 gap-3">
-          {/* Sidebar with smaller icons and better text alignment */}
+          {/* Sidebar with smaller icons and better text alignment - removed background from text items */}
           <div className="w-[110px] bg-sidebar rounded-md p-1.5 flex flex-col gap-1.5 justify-between overflow-hidden">
             <div className="flex flex-col gap-1.5 overflow-y-auto">
-              <div className="h-7 w-full rounded bg-sidebar-primary/20 flex items-center px-1.5">
+              <div className="h-7 w-full rounded flex items-center px-1.5 bg-sidebar-primary/20">
                 <Activity className="h-3 w-3 text-white mr-1.5" />
-                <span className="text-[7px] font-medium text-white truncate">Analytics</span>
+                <span className="text-[6px] font-medium text-white truncate">Analytics</span>
               </div>
-              <div className="h-7 w-full rounded bg-sidebar-primary/20 flex items-center px-1.5">
+              <div className="h-7 w-full rounded flex items-center px-1.5 bg-sidebar-primary/20">
                 <PhoneCall className="h-3 w-3 text-white mr-1.5" />
-                <span className="text-[7px] font-medium text-white truncate">Calls</span>
+                <span className="text-[6px] font-medium text-white truncate">Calls</span>
               </div>
-              <div className="h-7 w-full rounded bg-primary/20 flex items-center px-1.5">
+              <div className="h-7 w-full rounded flex items-center px-1.5 bg-primary/20">
                 <Mic className="h-3 w-3 text-white mr-1.5" />
-                <span className="text-[7px] font-medium text-white truncate">Dialogue Flows</span>
+                <span className="text-[6px] font-medium text-white truncate">Dialogue Flows</span>
               </div>
-              <div className="h-7 w-full rounded bg-sidebar-primary/20 flex items-center px-1.5">
+              <div className="h-7 w-full rounded flex items-center px-1.5 bg-sidebar-primary/20">
                 <Package className="h-3 w-3 text-white mr-1.5" />
-                <span className="text-[7px] font-medium text-white truncate">Campaigns</span>
+                <span className="text-[6px] font-medium text-white truncate">Campaigns</span>
               </div>
-              <div className="h-7 w-full rounded bg-sidebar-primary/20 flex items-center px-1.5">
+              <div className="h-7 w-full rounded flex items-center px-1.5 bg-sidebar-primary/20">
                 <FileText className="h-3 w-3 text-white mr-1.5" />
-                <span className="text-[7px] font-medium text-white truncate">Reports</span>
+                <span className="text-[6px] font-medium text-white truncate">Reports</span>
               </div>
-              <div className="h-7 w-full rounded bg-sidebar-primary/20 flex items-center px-1.5">
+              <div className="h-7 w-full rounded flex items-center px-1.5 bg-sidebar-primary/20">
                 <Users className="h-3 w-3 text-white mr-1.5" />
-                <span className="text-[7px] font-medium text-white truncate">Team</span>
+                <span className="text-[6px] font-medium text-white truncate">Team</span>
               </div>
-              <div className="h-7 w-full rounded bg-sidebar-primary/20 flex items-center px-1.5">
+              <div className="h-7 w-full rounded flex items-center px-1.5 bg-sidebar-primary/20">
                 <Wrench className="h-3 w-3 text-white mr-1.5" />
-                <span className="text-[7px] font-medium text-white truncate">Settings</span>
+                <span className="text-[6px] font-medium text-white truncate">Settings</span>
               </div>
             </div>
             
             {/* Credits and profile at the bottom */}
             <div className="mt-1">
-              <div className="h-6 w-full rounded bg-sidebar-primary/10 mb-1.5 flex items-center justify-center">
+              <div className="h-6 w-full mb-1.5 flex items-center justify-center">
                 <CreditCard className="h-2.5 w-2.5 text-white/80 mr-1" />
                 <span className="text-[6px] font-medium text-white/80">Credits: 2,500</span>
               </div>
@@ -165,14 +165,14 @@ const DashboardPreviewImage = () => {
               </div>
             </div>
             
-            {/* Table - more compact */}
+            {/* Table - improved clarity for campaign rows */}
             <div className="bg-card rounded-md border flex-1 p-2 overflow-hidden">
               <div className="flex justify-between mb-2">
                 <div className="h-3.5 text-[7px] font-semibold text-foreground/90 flex items-center">
                   Active Campaign Performance
                 </div>
-                <div className="h-6 w-20 bg-primary rounded flex items-center justify-center">
-                  <span className="text-[7px] text-white">New Campaign</span>
+                <div className="h-5 w-16 bg-primary rounded flex items-center justify-center">
+                  <span className="text-[6px] text-white">New Campaign</span>
                 </div>
               </div>
               <div className="h-7 bg-muted/50 rounded mb-1 flex items-center px-2">
@@ -194,10 +194,10 @@ const DashboardPreviewImage = () => {
                 ].map((item, i) => (
                   <div key={i} className="h-10 border-b last:border-b-0 flex items-center px-2">
                     <div className="grid grid-cols-6 gap-2 w-full">
-                      <div className="h-3 text-[6px] text-foreground/80 flex items-center">{item.name}</div>
-                      <div className="h-3 text-[6px] text-foreground/80 flex items-center">{item.type}</div>
+                      <div className="h-3 text-[6px] text-foreground/90 font-medium flex items-center">{item.name}</div>
+                      <div className="h-3 text-[6px] text-foreground/90 flex items-center">{item.type}</div>
                       <div className="h-3 text-[6px] flex items-center">
-                        <span className={`px-1 py-0.5 rounded-full text-[5px] ${
+                        <span className={`px-1 py-0.5 rounded-full text-[5px] font-medium ${
                           item.status === 'Active' ? 'bg-success/20 text-success' : 'bg-muted text-muted-foreground'
                         }`}>
                           {item.status}
@@ -214,7 +214,7 @@ const DashboardPreviewImage = () => {
                         </div>
                         <span className="ml-1">{item.progress}%</span>
                       </div>
-                      <div className="h-3 text-[6px] text-foreground/80 flex items-center">{item.calls}</div>
+                      <div className="h-3 text-[6px] text-foreground/90 font-medium flex items-center">{item.calls}</div>
                       <div className="h-5 w-14 bg-muted rounded flex items-center justify-center">
                         <span className="text-[5px]">View Details</span>
                       </div>
