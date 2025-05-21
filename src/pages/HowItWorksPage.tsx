@@ -23,9 +23,12 @@ const HowItWorksPage = () => {
             <Link to="/blogs" className="text-sm font-medium hover:text-primary transition-colors">Blog</Link>
             <Link to="/docs" className="text-sm font-medium hover:text-primary transition-colors">Documentation</Link>
           </div>
-          <Link to="/dashboard">
-            <Button>Dashboard</Button>
-          </Link>
+          <div className="flex items-center gap-3">
+            <Button variant="outline">Book a Demo</Button>
+            <Link to="/dashboard">
+              <Button>Dashboard</Button>
+            </Link>
+          </div>
         </div>
       </header>
 

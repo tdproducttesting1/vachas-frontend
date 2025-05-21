@@ -33,14 +33,19 @@ const Index = () => {
           </div>
           <div className="hidden md:flex items-center gap-6">
             <Link to="/#features" className="text-sm font-medium hover:text-primary transition-colors">Features</Link>
-            <Link to="/#how-it-works" className="text-sm font-medium hover:text-primary transition-colors">How It Works</Link>
+            <Link to="/how-it-works" className="text-sm font-medium hover:text-primary transition-colors">How It Works</Link>
             <Link to="/pricing" className="text-sm font-medium hover:text-primary transition-colors">Pricing</Link>
             <Link to="/blogs" className="text-sm font-medium hover:text-primary transition-colors">Blog</Link>
             <Link to="/docs" className="text-sm font-medium hover:text-primary transition-colors">Documentation</Link>
           </div>
-          <Button onClick={handleGetStarted} disabled={isLoading}>
-            {isLoading ? 'Loading...' : 'Get Started'}
-          </Button>
+          <div className="flex items-center gap-3">
+            <Button variant="outline" onClick={() => navigate('/contact')}>
+              Book a Demo
+            </Button>
+            <Button onClick={handleGetStarted} disabled={isLoading}>
+              {isLoading ? 'Loading...' : 'Get Started'}
+            </Button>
+          </div>
         </div>
       </header>
 
@@ -86,19 +91,25 @@ const Index = () => {
             {features.map((feature, index) => (
               <div 
                 key={index} 
-                className="bg-card rounded-xl p-6 border transition-all duration-300 transform hover:shadow-lg hover:-translate-y-1 relative overflow-hidden group"
+                className="bg-gradient-to-br from-white to-muted/30 rounded-xl p-6 border border-transparent hover:border-primary/20 transition-all duration-300 transform hover:shadow-xl hover:-translate-y-1 relative overflow-hidden cursor-pointer group"
                 onMouseEnter={() => setHoveredFeature(index)}
                 onMouseLeave={() => setHoveredFeature(null)}
               >
-                <div 
-                  className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                ></div>
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors duration-300">
-                  <span className="text-primary text-xl font-bold">{index + 1}</span>
+                <div className="absolute top-0 left-0 h-1 w-0 bg-primary transition-all duration-500 group-hover:w-full"></div>
+                <div className="absolute top-0 right-0 w-1 h-0 bg-primary transition-all duration-500 group-hover:h-full delay-100"></div>
+                <div className="absolute bottom-0 right-0 h-1 w-0 bg-primary transition-all duration-500 group-hover:w-full delay-200"></div>
+                <div className="absolute bottom-0 left-0 w-1 h-0 bg-primary transition-all duration-500 group-hover:h-full delay-300"></div>
+                
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-all duration-300 transform group-hover:rotate-6">
+                  <span className="text-primary text-xl font-bold transition-all duration-300 group-hover:scale-110">{index + 1}</span>
                 </div>
                 <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">{feature.title}</h3>
                 <p className="text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300">{feature.description}</p>
-                <div className="h-1 w-0 bg-primary mt-4 transition-all duration-300 group-hover:w-16"></div>
+                
+                <div className="flex items-center mt-4 opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                  <ArrowRight className="h-4 w-4 text-primary mr-2" />
+                  <span className="text-sm font-medium text-primary">Learn more</span>
+                </div>
               </div>
             ))}
           </div>
@@ -117,24 +128,29 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-6 md:gap-0 relative">
-            {/* Clean line connecting steps */}
-            <div className="hidden md:block absolute top-16 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-transparent via-primary/40 to-transparent"></div>
-            
+          <div className="flex flex-col md:flex-row gap-6 md:gap-8">
             {steps.map((step, index) => (
-              <div key={index} className="flex-1 flex flex-col items-center text-center relative">
-                <div className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center mb-6 font-bold z-10 shadow-md">
-                  {index + 1}
-                </div>
-                <div className="p-5 rounded-lg border bg-card hover:shadow-md transition-shadow duration-300 w-full">
-                  <h3 className="text-xl font-bold mb-3">{step.title}</h3>
-                  <p className="text-muted-foreground">{step.description}</p>
-                </div>
-                {index < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-16 right-0 transform translate-x-1/2 z-10">
-                    <ArrowRight className="h-4 w-4 text-primary" />
+              <div 
+                key={index} 
+                className="flex-1 group relative animate-fade-in"
+                style={{ animationDelay: `${index * 150}ms` }}
+              >
+                <div className="bg-white rounded-xl border hover:border-primary hover:shadow-lg transition-all duration-300 p-6 h-full transform group-hover:translate-y-[-8px]">
+                  <div className="w-14 h-14 rounded-full bg-primary/10 group-hover:bg-primary text-primary group-hover:text-white flex items-center justify-center mb-6 font-bold text-xl transition-all duration-300 mx-auto">
+                    {index + 1}
                   </div>
-                )}
+                  <h3 className="text-xl font-bold mb-3 text-center group-hover:text-primary transition-colors duration-300">{step.title}</h3>
+                  <p className="text-muted-foreground text-center">{step.description}</p>
+                  
+                  <div className="mt-6 space-y-2 opacity-0 max-h-0 group-hover:max-h-32 group-hover:opacity-100 overflow-hidden transition-all duration-500">
+                    {step.bulletPoints && step.bulletPoints.map((point, i) => (
+                      <p key={i} className="text-sm flex items-start gap-2">
+                        <span className="h-2 w-2 rounded-full bg-primary shrink-0 mt-1.5"></span>
+                        <span className="text-muted-foreground">{point}</span>
+                      </p>
+                    ))}
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -327,7 +343,7 @@ const features = [
   },
   {
     title: 'Natural Conversations',
-    description: 'Gemini-powered AI for realistic, context-aware conversations that feel natural to customers.'
+    description: 'Advanced conversational AI for realistic, context-aware dialogues that feel natural to customers.'
   },
   {
     title: 'Post-Call Analysis',
@@ -350,19 +366,23 @@ const features = [
 const steps = [
   {
     title: 'Upload Contacts',
-    description: 'Import your contact list via CSV or sync directly from your CRM.'
+    description: 'Import your contact list via CSV or sync directly from your CRM.',
+    bulletPoints: ['Automatic validation', 'Duplicate detection', 'Segmentation options']
   },
   {
     title: 'Configure AI Script',
-    description: 'Create conversation flows with custom prompts and variables.'
+    description: 'Create conversation flows with custom prompts and variables.',
+    bulletPoints: ['Visual flow builder', 'AI script suggestions', 'Multiple language support']
   },
   {
     title: 'Launch Campaign',
-    description: 'Schedule and activate your campaign with real-time monitoring.'
+    description: 'Schedule and activate your campaign with real-time monitoring.',
+    bulletPoints: ['Real-time analytics', 'Automatic pacing', 'Instant pause capability']
   },
   {
     title: 'Review Analytics',
-    description: 'Analyze call outcomes, insights, and export reports.'
+    description: 'Analyze call outcomes, insights, and export reports.',
+    bulletPoints: ['Conversion tracking', 'AI-generated summaries', 'Custom report builder']
   }
 ];
 
