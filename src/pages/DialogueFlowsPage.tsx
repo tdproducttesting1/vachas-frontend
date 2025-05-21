@@ -6,7 +6,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import DashboardLayout from '@/components/layouts/DashboardLayout';
-import { Plus, Search, FileJson, List, Settings } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Plus, Search, FileJson, List, Settings, ExternalLink } from 'lucide-react';
 
 const DialogueFlowsPage = () => {
   const [activeTab, setActiveTab] = useState('visual');
@@ -31,10 +32,18 @@ const DialogueFlowsPage = () => {
             </SelectContent>
           </Select>
         </div>
-        <Button>
-          <Plus className="mr-2 h-4 w-4" />
-          New Flow
-        </Button>
+        <div className="flex items-center gap-3">
+          <Button variant="outline" asChild>
+            <Link to="/dialogue-marketplace">
+              <ExternalLink className="mr-2 h-4 w-4" />
+              Marketplace
+            </Link>
+          </Button>
+          <Button>
+            <Plus className="mr-2 h-4 w-4" />
+            New Flow
+          </Button>
+        </div>
       </div>
       
       <Card className="mb-6">
@@ -61,12 +70,21 @@ const DialogueFlowsPage = () => {
             </div>
             
             <TabsContent value="visual" className="mt-0 outline-none border-none">
-              <div className="h-[600px] border rounded-md bg-slate-50 relative overflow-hidden">
-                {/* Flow chart visualization similar to the uploaded image */}
-                <div className="absolute inset-0 bg-grid-pattern" style={{backgroundImage: 'url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAgTSAwIDIwIEwgNDAgMjAgTSAyMCAwIEwgMjAgNDAgTSAwIDMwIEwgNDAgMzAgTSAzMCAwIEwgMzAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2UxZTFlMSIgb3BhY2l0eT0iMC4yIiBzdHJva2Utd2lkdGg9IjEiLz48cGF0aCBkPSJNIDQwIDAgTCAwIDAgTCAwIDQwIiBmaWxsPSJub25lIiBzdHJva2U9IiNlMWUxZTEiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==)'}}></div>
+              <div className="h-[600px] border rounded-md bg-slate-50 relative overflow-hidden" id="flow-editor-container">
+                {/* Flow chart visualization - updated to show it's draggable */}
+                <div className="absolute inset-0 bg-grid-pattern" style={{backgroundImage: 'url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAgTSAwIDIwIEwgNDAgMjAgTSAyMCAwIEwgMjAgNDAgTSAwIDMwIEwgNDAgMzAgTSAzMCAwIEwgMzAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2UxZTFlMSIgb3BhY2l0eT0iMC4yIiBzdHJva2Utd2lkdGg9IjEiLz48cGF0aCBkPSJNIDQwIDAgTCAwIDAgTCAwIDQwIiBmaWxsPSJub25lIiBzdHJva2U9IiNlMWUxZTEiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')}}></div>
                 
-                {/* Start node */}
-                <div className="absolute left-1/2 top-10 transform -translate-x-1/2 w-64 p-4 bg-white rounded-lg border border-gray-300 shadow-sm">
+                {/* Instructions overlay */}
+                <div className="absolute top-2 left-2 right-2 bg-white/80 backdrop-blur-sm p-3 rounded-md shadow-sm border border-primary/20 z-50">
+                  <p className="text-sm text-muted-foreground">
+                    <strong>Drag nodes</strong> to position them. <strong>Click and hold</strong> on node edges to create connections.
+                    <strong>Double-click</strong> on the canvas to create a new node.
+                  </p>
+                </div>
+                
+                {/* Start node - draggable */}
+                <div className="absolute left-1/2 top-[80px] transform -translate-x-1/2 w-64 p-4 bg-white rounded-lg border border-gray-300 shadow-sm cursor-move hover:shadow-md transition-shadow"
+                     draggable="true">
                   <div className="flex items-center gap-2 mb-2">
                     <div className="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center">
                       <span className="text-white text-xs">S</span>
@@ -77,13 +95,16 @@ const DialogueFlowsPage = () => {
                   <div className="mt-2 p-2 bg-gray-50 rounded text-sm">
                     "Hey there, how are you doing today?"
                   </div>
+                  {/* Connection points */}
+                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-3 h-3 bg-blue-500 rounded-full cursor-pointer border-2 border-white"></div>
                 </div>
                 
                 {/* Vertical line connecting nodes */}
-                <div className="absolute left-1/2 top-[104px] w-0.5 h-16 bg-gray-300 transform -translate-x-1/2"></div>
+                <div className="absolute left-1/2 top-[134px] w-0.5 h-36 bg-gray-300 transform -translate-x-1/2"></div>
                 
-                {/* Condition node */}
-                <div className="absolute left-1/2 top-[160px] transform -translate-x-1/2 w-64 p-4 bg-white rounded-lg border border-gray-300 shadow-sm">
+                {/* Condition node - draggable */}
+                <div className="absolute left-1/2 top-[220px] transform -translate-x-1/2 w-64 p-4 bg-white rounded-lg border border-gray-300 shadow-sm cursor-move hover:shadow-md transition-shadow"
+                     draggable="true">
                   <div className="flex items-center gap-2 mb-2">
                     <div className="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center">
                       <span className="text-white text-xs">C</span>
@@ -91,52 +112,104 @@ const DialogueFlowsPage = () => {
                     <span className="font-medium">Condition</span>
                   </div>
                   <p className="text-sm text-gray-600">Check customer response</p>
+                  {/* Connection points */}
+                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-blue-500 rounded-full cursor-pointer border-2 border-white"></div>
+                  <div className="absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-blue-500 rounded-full cursor-pointer border-2 border-white"></div>
+                  <div className="absolute left-0 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-blue-500 rounded-full cursor-pointer border-2 border-white"></div>
                 </div>
                 
                 {/* Branch lines */}
-                <div className="absolute left-[325px] top-[200px] w-20 h-0.5 bg-gray-300"></div>
-                <div className="absolute left-[195px] top-[200px] w-20 h-0.5 bg-gray-300"></div>
-                <div className="absolute left-[345px] top-[200px] w-0.5 h-40 bg-gray-300"></div>
-                <div className="absolute left-[195px] top-[200px] w-0.5 h-40 bg-gray-300"></div>
+                <div className="absolute left-[324px] top-[240px] w-36 h-0.5 bg-gray-300"></div>
+                <div className="absolute left-[140px] top-[240px] w-36 h-0.5 bg-gray-300"></div>
+                <div className="absolute left-[360px] top-[240px] w-0.5 h-60 bg-gray-300"></div>
+                <div className="absolute left-[140px] top-[240px] w-0.5 h-60 bg-gray-300"></div>
                 
                 {/* Edge labels */}
-                <div className="absolute left-[380px] top-[190px] transform -translate-x-1/2 bg-white px-2 text-xs border rounded">
-                  New Edge
+                <div className="absolute left-[380px] top-[220px] transform -translate-x-1/2 bg-white px-2 py-1 text-xs border rounded">
+                  positive
                 </div>
-                <div className="absolute left-[160px] top-[190px] transform -translate-x-1/2 bg-white px-2 text-xs border rounded">
-                  greeted
+                <div className="absolute left-[120px] top-[220px] transform -translate-x-1/2 bg-white px-2 py-1 text-xs border rounded">
+                  negative
                 </div>
                 
-                {/* Response nodes */}
-                <div className="absolute left-[400px] top-[240px] w-64 p-4 bg-white rounded-lg border border-gray-300 shadow-sm">
+                {/* Response node - draggable */}
+                <div className="absolute left-[400px] top-[300px] w-64 p-4 bg-white rounded-lg border border-gray-300 shadow-sm cursor-move hover:shadow-md transition-shadow"
+                     draggable="true">
                   <div className="flex items-center gap-2 mb-2">
                     <div className="w-6 h-6 rounded-full bg-purple-500 flex items-center justify-center">
                       <span className="text-white text-xs">R</span>
                     </div>
-                    <span className="font-medium">New Node</span>
+                    <span className="font-medium">Positive Response</span>
                   </div>
-                  <p className="text-sm text-gray-600">Select a node or edge and press backspace to remove it</p>
+                  <p className="text-sm text-gray-600">Handle positive customer response</p>
+                  <div className="mt-2 p-2 bg-gray-50 rounded text-sm">
+                    "Great! I'd like to tell you about our new service."
+                  </div>
+                  {/* Connection points */}
+                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-blue-500 rounded-full cursor-pointer border-2 border-white"></div>
+                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-3 h-3 bg-blue-500 rounded-full cursor-pointer border-2 border-white"></div>
                 </div>
                 
-                <div className="absolute left-[140px] top-[240px] w-64 p-4 bg-white rounded-lg border border-gray-300 shadow-sm">
+                {/* End call node - draggable */}
+                <div className="absolute left-[100px] top-[300px] w-64 p-4 bg-white rounded-lg border border-gray-300 shadow-sm cursor-move hover:shadow-md transition-shadow"
+                     draggable="true">
                   <div className="flex items-center gap-2 mb-2">
                     <div className="w-6 h-6 rounded-full bg-red-500 flex items-center justify-center">
                       <span className="text-white text-xs">E</span>
                     </div>
                     <span className="font-medium">End call</span>
                   </div>
-                  <p className="text-sm text-gray-600">Click 'Add New Node' on the right to add a new node</p>
+                  <p className="text-sm text-gray-600">End conversation if customer is not interested</p>
+                  <div className="mt-2 p-2 bg-gray-50 rounded text-sm">
+                    "I understand. Thanks for your time and have a great day!"
+                  </div>
+                  {/* Connection points */}
+                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-blue-500 rounded-full cursor-pointer border-2 border-white"></div>
                 </div>
                 
+                {/* Add API node - draggable */}
+                <div className="absolute left-[400px] top-[400px] w-64 p-4 bg-white rounded-lg border border-gray-300 shadow-sm cursor-move hover:shadow-md transition-shadow"
+                     draggable="true">
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="w-6 h-6 rounded-full bg-amber-500 flex items-center justify-center">
+                      <span className="text-white text-xs">API</span>
+                    </div>
+                    <span className="font-medium">External API</span>
+                  </div>
+                  <p className="text-sm text-gray-600">Connect to third-party API for data</p>
+                  <div className="mt-2 p-2 bg-gray-50 rounded text-sm">
+                    <code className="text-xs">GET /api/custom-prompt</code>
+                  </div>
+                  {/* Connection points */}
+                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-blue-500 rounded-full cursor-pointer border-2 border-white"></div>
+                </div>
+                
+                {/* Vertical line connecting response to API */}
+                <div className="absolute left-[432px] top-[350px] w-0.5 h-50 bg-gray-300"></div>
+                
                 {/* Toolbar */}
-                <div className="absolute top-4 left-4 bg-white border rounded-md shadow-sm">
-                  <Button variant="ghost" size="sm">
-                    <Plus className="h-4 w-4" />
+                <div className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white border rounded-md shadow-sm flex flex-col">
+                  <Button variant="ghost" size="icon" className="node-btn" title="Add Start Node">
+                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
                   </Button>
-                  <div className="h-4 border-r border-gray-200 mx-1"></div>
-                  <Button variant="ghost" size="sm">
-                    <Search className="h-4 w-4" />
+                  <Button variant="ghost" size="icon" className="node-btn" title="Add Condition">
+                    <div className="w-3 h-3 rounded-full bg-blue-500"></div>
                   </Button>
+                  <Button variant="ghost" size="icon" className="node-btn" title="Add Response">
+                    <div className="w-3 h-3 rounded-full bg-purple-500"></div>
+                  </Button>
+                  <Button variant="ghost" size="icon" className="node-btn" title="Add API Node">
+                    <div className="w-3 h-3 rounded-full bg-amber-500"></div>
+                  </Button>
+                  <Button variant="ghost" size="icon" className="node-btn" title="Add End Node">
+                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                  </Button>
+                </div>
+                
+                <div className="absolute bottom-4 left-4 flex bg-white rounded-md shadow-sm">
+                  <Button variant="ghost" size="sm" title="Zoom In">+</Button>
+                  <Button variant="ghost" size="sm" title="Zoom Reset">100%</Button>
+                  <Button variant="ghost" size="sm" title="Zoom Out">-</Button>
                 </div>
               </div>
             </TabsContent>
@@ -172,7 +245,7 @@ const DialogueFlowsPage = () => {
       "type": "response",
       "position": { "x": 400, "y": 350 },
       "data": {
-        "message": "I'm glad to hear that! I wanted to tell you about our new product feature."
+        "message": "I'm glad to hear that! I wanted to tell you about our new service."
       }
     },
     {
@@ -180,7 +253,24 @@ const DialogueFlowsPage = () => {
       "type": "end",
       "position": { "x": 100, "y": 350 },
       "data": {
-        "reason": "customer_not_interested"
+        "reason": "customer_not_interested",
+        "message": "I understand. Thanks for your time and have a great day!"
+      }
+    },
+    {
+      "id": "api-call",
+      "type": "api",
+      "position": { "x": 400, "y": 450 },
+      "data": {
+        "endpoint": "/api/custom-prompt",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer {{API_KEY}}"
+        },
+        "responseMapping": {
+          "nextStep": "response.next_action",
+          "customPrompt": "response.prompt_text"
+        }
       }
     }
   ],
@@ -194,13 +284,18 @@ const DialogueFlowsPage = () => {
       "id": "e2-3",
       "source": "condition-1",
       "target": "response-positive",
-      "label": "New Edge"
+      "label": "positive"
     },
     {
       "id": "e2-4",
       "source": "condition-1",
       "target": "end-call",
-      "label": "greeted"
+      "label": "negative"
+    },
+    {
+      "id": "e3-5",
+      "source": "response-positive",
+      "target": "api-call"
     }
   ]
 }`}</pre>
@@ -249,6 +344,45 @@ const DialogueFlowsPage = () => {
                       </SelectContent>
                     </Select>
                   </div>
+                  
+                  {/* API Integration Section */}
+                  <div className="col-span-2 mt-4">
+                    <h3 className="text-lg font-medium mb-4">External API Integration</h3>
+                    <div className="space-y-4 border rounded-md p-4">
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium">API Endpoint</label>
+                        <Input defaultValue="https://api.example.com/custom-prompts" />
+                      </div>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <label className="text-sm font-medium">API Key Variable</label>
+                          <Input defaultValue="CUSTOM_API_KEY" placeholder="Environment variable name" />
+                        </div>
+                        <div className="space-y-2">
+                          <label className="text-sm font-medium">Request Method</label>
+                          <Select defaultValue="GET">
+                            <SelectTrigger>
+                              <SelectValue />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="GET">GET</SelectItem>
+                              <SelectItem value="POST">POST</SelectItem>
+                              <SelectItem value="PUT">PUT</SelectItem>
+                              <SelectItem value="DELETE">DELETE</SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium">Headers (JSON)</label>
+                        <Input defaultValue='{"Content-Type": "application/json", "Authorization": "Bearer {{API_KEY}}"}' />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium">Response Mapping</label>
+                        <Input defaultValue='{"nextAction": "response.data.next_step", "promptText": "response.data.prompt"}' />
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div className="flex justify-end gap-3">
                   <Button variant="outline">Cancel</Button>
@@ -269,7 +403,10 @@ const DialogueFlowsPage = () => {
             {recentFlows.map((flow) => (
               <div key={flow.id} className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className={`w-2 h-8 rounded-full bg-${flow.status === 'active' ? 'green' : flow.status === 'draft' ? 'amber' : 'gray'}-400`}></div>
+                  <div className={`w-2 h-8 rounded-full ${
+                    flow.status === 'active' ? 'bg-green-400' : 
+                    flow.status === 'draft' ? 'bg-amber-400' : 'bg-gray-400'
+                  }`}></div>
                   <div>
                     <div className="font-medium">{flow.name}</div>
                     <div className="text-xs text-muted-foreground">Modified: {flow.modified}</div>

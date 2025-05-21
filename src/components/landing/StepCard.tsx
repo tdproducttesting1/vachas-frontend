@@ -9,36 +9,36 @@ interface StepCardProps {
 }
 
 const StepCard = ({ index, title, description, bulletPoints }: StepCardProps) => {
-  const isEven = index % 2 === 0;
-  
   return (
     <div 
-      className="flex items-start gap-6 animate-fade-in relative"
+      className="flex items-start gap-4 animate-fade-in group relative"
       style={{ animationDelay: `${index * 150}ms` }}
     >
-      {/* Timeline dot and line */}
-      <div className="flex flex-col items-center">
-        <div className="w-12 h-12 rounded-full bg-primary/10 group-hover:bg-primary text-primary flex items-center justify-center font-bold text-xl transition-all duration-300">
+      {/* Timeline dot */}
+      <div className="relative">
+        <div className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-lg z-10 relative group-hover:scale-110 transition-transform duration-300">
           {index + 1}
         </div>
         {index < 3 && (
-          <div className="w-1 bg-primary/20 h-20 mt-2"></div>
+          <div className="absolute top-10 bottom-0 w-0.5 bg-primary/20 left-1/2 -translate-x-1/2"></div>
         )}
       </div>
       
       {/* Content */}
-      <div className="bg-white rounded-xl border hover:border-primary hover:shadow-lg transition-all duration-300 p-6 flex-1 transform hover:translate-y-[-8px] group">
-        <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">{title}</h3>
-        <p className="text-muted-foreground">{description}</p>
+      <div className="bg-white/80 backdrop-blur-sm rounded-xl border border-primary/10 hover:border-primary/30 hover:shadow-lg transition-all duration-300 p-5 flex-1 transform hover:translate-y-[-5px]">
+        <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors duration-300">{title}</h3>
+        <p className="text-muted-foreground text-sm">{description}</p>
         
-        <div className="mt-4 space-y-2 opacity-80 group-hover:opacity-100 transition-all duration-300">
-          {bulletPoints && bulletPoints.map((point, i) => (
-            <p key={i} className="flex items-start gap-2">
-              <span className="h-2 w-2 rounded-full bg-primary shrink-0 mt-1.5"></span>
-              <span className="text-muted-foreground">{point}</span>
-            </p>
-          ))}
-        </div>
+        {bulletPoints && bulletPoints.length > 0 && (
+          <div className="mt-3 space-y-1.5">
+            {bulletPoints.map((point, i) => (
+              <div key={i} className="flex items-start gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-primary shrink-0 mt-1.5"></span>
+                <span className="text-sm text-muted-foreground">{point}</span>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
