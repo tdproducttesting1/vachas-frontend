@@ -3,6 +3,9 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { List, FileJson, Settings } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import VisualEditor from '@/components/dialogue-flows/VisualEditor';
+import JsonEditor from '@/components/dialogue-flows/JsonEditor';
+import SettingsEditor from '@/components/dialogue-flows/SettingsEditor';
 
 const FlowEditor = () => {
   const [activeTab, setActiveTab] = useState('visual');
