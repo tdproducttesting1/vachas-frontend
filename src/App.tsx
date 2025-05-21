@@ -17,6 +17,12 @@ import SupportCenterPage from "./pages/SupportCenterPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsOfServicePage from "./pages/TermsOfServicePage";
 import ContactPage from "./pages/ContactPage";
+import CallsPage from "./pages/CallsPage";
+import AnalyticsPage from "./pages/AnalyticsPage";
+import ReportsPage from "./pages/ReportsPage";
+import ScriptsPage from "./pages/ScriptsPage";
+import TeamPage from "./pages/TeamPage";
+import DialogueFlowsPage from "./pages/DialogueFlowsPage";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +45,12 @@ const App = () => (
           <Route path="/privacy" element={<PrivacyPolicyPage />} />
           <Route path="/terms" element={<TermsOfServicePage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/calls" element={<CallsPage />} />
+          <Route path="/analytics" element={<AnalyticsPage />} />
+          <Route path="/reports" element={<ReportsPage />} />
+          <Route path="/scripts" element={<ScriptsPage />} />
+          <Route path="/team" element={<TeamPage />} />
+          <Route path="/dialogue-flows" element={<DialogueFlowsPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

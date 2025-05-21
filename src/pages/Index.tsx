@@ -6,6 +6,8 @@ import { ArrowRight, Facebook, Instagram, Linkedin, Twitter, Mail } from 'lucide
 import DashboardPreviewImage from '@/components/landing/DashboardPreviewImage';
 import { Separator } from '@/components/ui/separator';
 import ComplianceBadges from '@/components/ComplianceBadges';
+import StepCard from '@/components/landing/StepCard';
+import FeatureCard from '@/components/landing/FeatureCard';
 
 const Index = () => {
   const navigate = useNavigate();
@@ -75,7 +77,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Features Section - modernized with animations and interactivity */}
+      {/* Features Section - with improved design */}
       <section id="features" className="py-16 md:py-24 px-6 md:px-8 bg-muted/30">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -89,34 +91,18 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <div 
-                key={index} 
-                className="bg-gradient-to-br from-white to-muted/30 rounded-xl p-6 border border-transparent hover:border-primary/20 transition-all duration-300 transform hover:shadow-xl hover:-translate-y-1 relative overflow-hidden cursor-pointer group"
-                onMouseEnter={() => setHoveredFeature(index)}
-                onMouseLeave={() => setHoveredFeature(null)}
-              >
-                <div className="absolute top-0 left-0 h-1 w-0 bg-primary transition-all duration-500 group-hover:w-full"></div>
-                <div className="absolute top-0 right-0 w-1 h-0 bg-primary transition-all duration-500 group-hover:h-full delay-100"></div>
-                <div className="absolute bottom-0 right-0 h-1 w-0 bg-primary transition-all duration-500 group-hover:w-full delay-200"></div>
-                <div className="absolute bottom-0 left-0 w-1 h-0 bg-primary transition-all duration-500 group-hover:h-full delay-300"></div>
-                
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-all duration-300 transform group-hover:rotate-6">
-                  <span className="text-primary text-xl font-bold transition-all duration-300 group-hover:scale-110">{index + 1}</span>
-                </div>
-                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">{feature.title}</h3>
-                <p className="text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300">{feature.description}</p>
-                
-                <div className="flex items-center mt-4 opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                  <ArrowRight className="h-4 w-4 text-primary mr-2" />
-                  <span className="text-sm font-medium text-primary">Learn more</span>
-                </div>
-              </div>
+              <FeatureCard
+                key={index}
+                index={index}
+                title={feature.title}
+                description={feature.description}
+              />
             ))}
           </div>
         </div>
       </section>
 
-      {/* How It Works Section - modernized with cleaner design */}
+      {/* How It Works Section - Vertical Timeline Style */}
       <section id="how-it-works" className="py-16 md:py-24 px-6 md:px-8 relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -128,30 +114,15 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-6 md:gap-8">
+          <div className="flex flex-col gap-8">
             {steps.map((step, index) => (
-              <div 
-                key={index} 
-                className="flex-1 group relative animate-fade-in"
-                style={{ animationDelay: `${index * 150}ms` }}
-              >
-                <div className="bg-white rounded-xl border hover:border-primary hover:shadow-lg transition-all duration-300 p-6 h-full transform group-hover:translate-y-[-8px]">
-                  <div className="w-14 h-14 rounded-full bg-primary/10 group-hover:bg-primary text-primary group-hover:text-white flex items-center justify-center mb-6 font-bold text-xl transition-all duration-300 mx-auto">
-                    {index + 1}
-                  </div>
-                  <h3 className="text-xl font-bold mb-3 text-center group-hover:text-primary transition-colors duration-300">{step.title}</h3>
-                  <p className="text-muted-foreground text-center">{step.description}</p>
-                  
-                  <div className="mt-6 space-y-2 opacity-0 max-h-0 group-hover:max-h-32 group-hover:opacity-100 overflow-hidden transition-all duration-500">
-                    {step.bulletPoints && step.bulletPoints.map((point, i) => (
-                      <p key={i} className="text-sm flex items-start gap-2">
-                        <span className="h-2 w-2 rounded-full bg-primary shrink-0 mt-1.5"></span>
-                        <span className="text-muted-foreground">{point}</span>
-                      </p>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <StepCard
+                key={index}
+                index={index}
+                title={step.title}
+                description={step.description}
+                bulletPoints={step.bulletPoints}
+              />
             ))}
           </div>
         </div>
@@ -237,8 +208,8 @@ const Index = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/docs" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    API & Webhooks
+                  <Link to="/dialogue-flows" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    Dialogue Flows
                   </Link>
                 </li>
               </ul>
@@ -358,8 +329,8 @@ const features = [
     description: 'Comprehensive metrics and insights on call performance, trends, and opportunities.'
   },
   {
-    title: 'Security & Compliance',
-    description: 'Enterprise-grade security, DPDP compliance, and Do-Not-Call registry verification.'
+    title: 'Dialogue Flows',
+    description: 'Design multi-turn conversation flows with nodes and conditional branches using drag-and-drop UI or JSON.'
   }
 ];
 

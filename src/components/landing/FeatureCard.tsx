@@ -1,6 +1,5 @@
 
 import { useState } from 'react';
-import { ArrowRight } from 'lucide-react';
 
 interface FeatureCardProps {
   index: number;
@@ -27,11 +26,6 @@ const FeatureCard = ({ index, title, description }: FeatureCardProps) => {
       </div>
       <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">{title}</h3>
       <p className="text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300">{description}</p>
-      
-      <div className="flex items-center mt-4 opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-        <ArrowRight className="h-4 w-4 text-primary mr-2" />
-        <span className="text-sm font-medium text-primary">Learn more</span>
-      </div>
     </div>
   );
 };

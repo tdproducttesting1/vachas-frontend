@@ -13,7 +13,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
-import { ArrowLeft, ChevronDown, LayoutDashboard, Play, Settings, Users, Phone, BarChart, FileText, LogOut } from 'lucide-react';
+import { ArrowLeft, ChevronDown, LayoutDashboard, Play, Settings, Users, Phone, BarChart, FileText, LogOut, File } from 'lucide-react';
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -42,7 +42,7 @@ const DashboardLayout = ({ children, title, subtitle }: DashboardLayoutProps) =>
                 </SidebarTrigger>
                 {title && (
                   <div>
-                    <h1 className="text-xl font-semibold">{title}</h1>
+                    <h1 className="text-xl font-semibold text-foreground">{title}</h1>
                     {subtitle && <p className="text-sm text-muted-foreground hidden md:block">{subtitle}</p>}
                   </div>
                 )}
@@ -57,11 +57,11 @@ const DashboardLayout = ({ children, title, subtitle }: DashboardLayoutProps) =>
                   <DropdownMenuTrigger asChild>
                     <Button variant="ghost" size="sm" className="flex items-center gap-2">
                       <Avatar className="h-8 w-8">
-                        <AvatarFallback>TA</AvatarFallback>
+                        <AvatarFallback>VA</AvatarFallback>
                       </Avatar>
                       <div className="hidden md:block text-left">
-                        <p className="text-sm font-medium">Tarang Admin</p>
-                        <p className="text-xs text-muted-foreground">admin@tarangai.com</p>
+                        <p className="text-sm font-medium">Vachas Admin</p>
+                        <p className="text-xs text-muted-foreground">admin@vachasai.com</p>
                       </div>
                       <ChevronDown className="h-4 w-4 text-muted-foreground" />
                     </Button>
@@ -99,9 +99,9 @@ const DashboardSidebar = () => {
       <SidebarHeader className="flex h-16 items-center px-4 border-b">
         <Link to="/dashboard" className="flex items-center gap-2">
           <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-lg">T</span>
+            <span className="text-primary-foreground font-bold text-lg">V</span>
           </div>
-          <span className="text-lg font-heading font-semibold">Tarang AI</span>
+          <span className="text-lg font-heading font-semibold">Vachas AI</span>
         </Link>
       </SidebarHeader>
       <SidebarContent className="flex flex-col h-full">
@@ -178,6 +178,8 @@ const mainNavItems = [
   { label: 'Campaigns', path: '/campaigns', icon: Play },
   { label: 'Calls', path: '/calls', icon: Phone },
   { label: 'Analytics', path: '/analytics', icon: BarChart },
+  { label: 'Reports', path: '/reports', icon: File },
+  { label: 'Dialogue Flows', path: '/dialogue-flows', icon: FileText },
 ];
 
 const managementNavItems = [
