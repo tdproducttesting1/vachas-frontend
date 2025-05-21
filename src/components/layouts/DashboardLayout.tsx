@@ -107,7 +107,7 @@ const DashboardSidebar = () => {
       <SidebarContent className="flex flex-col h-full">
         <div className="flex-1 py-2">
           <div className="px-3 py-2">
-            <h3 className="text-xs font-medium text-muted-foreground tracking-wider uppercase">
+            <h3 className="text-xs font-medium text-white/70 tracking-wider uppercase">
               General
             </h3>
             <nav className="mt-2 space-y-1">
@@ -118,8 +118,8 @@ const DashboardSidebar = () => {
                   className={cn(
                     "flex items-center gap-3 px-3 py-2 text-sm rounded-md",
                     location.pathname === item.path
-                      ? "bg-primary text-primary-foreground"
-                      : "hover:bg-secondary text-muted-foreground hover:text-foreground"
+                      ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium"
+                      : "text-white hover:bg-white/10 hover:text-white"
                   )}
                 >
                   <item.icon className="h-4 w-4" />
@@ -130,7 +130,7 @@ const DashboardSidebar = () => {
           </div>
           
           <div className="px-3 py-2 mt-4">
-            <h3 className="text-xs font-medium text-muted-foreground tracking-wider uppercase">
+            <h3 className="text-xs font-medium text-white/70 tracking-wider uppercase">
               Management
             </h3>
             <nav className="mt-2 space-y-1">
@@ -141,8 +141,8 @@ const DashboardSidebar = () => {
                   className={cn(
                     "flex items-center gap-3 px-3 py-2 text-sm rounded-md",
                     location.pathname === item.path
-                      ? "bg-primary text-primary-foreground"
-                      : "hover:bg-secondary text-muted-foreground hover:text-foreground"
+                      ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium"
+                      : "text-white hover:bg-white/10 hover:text-white"
                   )}
                 >
                   <item.icon className="h-4 w-4" />
@@ -156,7 +156,7 @@ const DashboardSidebar = () => {
         <div className="p-3 mt-auto">
           <Link
             to="/"
-            className="flex items-center gap-3 px-3 py-2 text-sm text-muted-foreground hover:text-foreground rounded-md hover:bg-secondary"
+            className="flex items-center gap-3 px-3 py-2 text-sm text-white/70 hover:text-white rounded-md hover:bg-white/10"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>Back to Home</span>
@@ -164,7 +164,7 @@ const DashboardSidebar = () => {
         </div>
       </SidebarContent>
       <SidebarFooter className="border-t p-4">
-        <Button variant="outline" size="sm" className="w-full">
+        <Button variant="outline" size="sm" className="w-full bg-white/10 text-white border-white/20 hover:bg-white/20 hover:text-white">
           <Settings className="mr-2 h-4 w-4" />
           Settings
         </Button>
