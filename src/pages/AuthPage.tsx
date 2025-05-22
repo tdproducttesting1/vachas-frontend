@@ -8,7 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
-import { FiMail, FiLock, FiUser, FiArrowLeft } from 'lucide-react';
+import { Mail, Lock, User, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const AuthPage = () => {
@@ -93,7 +93,7 @@ const AuthPage = () => {
     <div className="flex flex-col min-h-screen bg-gray-50">
       <div className="p-4">
         <Link to="/" className="inline-flex items-center text-sm font-medium text-gray-600 hover:text-gray-900">
-          <FiArrowLeft className="mr-2 h-4 w-4" />
+          <ArrowLeft className="mr-2 h-4 w-4" />
           Back to Home
         </Link>
       </div>
@@ -117,7 +117,7 @@ const AuthPage = () => {
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
                     <div className="relative">
-                      <FiMail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                      <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                       <Input
                         id="email"
                         type="email"
@@ -133,7 +133,7 @@ const AuthPage = () => {
                   <div className="space-y-2">
                     <Label htmlFor="password">Password</Label>
                     <div className="relative">
-                      <FiLock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                      <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                       <Input
                         id="password"
                         type="password"
@@ -162,7 +162,7 @@ const AuthPage = () => {
                     <div className="space-y-2">
                       <Label htmlFor="firstName">First Name</Label>
                       <div className="relative">
-                        <FiUser className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                        <User className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                         <Input
                           id="firstName"
                           placeholder="John"
@@ -177,7 +177,7 @@ const AuthPage = () => {
                     <div className="space-y-2">
                       <Label htmlFor="lastName">Last Name</Label>
                       <div className="relative">
-                        <FiUser className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                        <User className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                         <Input
                           id="lastName"
                           placeholder="Doe"
@@ -193,7 +193,7 @@ const AuthPage = () => {
                   <div className="space-y-2">
                     <Label htmlFor="email-signup">Email</Label>
                     <div className="relative">
-                      <FiMail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                      <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                       <Input
                         id="email-signup"
                         type="email"
@@ -209,7 +209,7 @@ const AuthPage = () => {
                   <div className="space-y-2">
                     <Label htmlFor="password-signup">Password</Label>
                     <div className="relative">
-                      <FiLock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                      <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                       <Input
                         id="password-signup"
                         type="password"
