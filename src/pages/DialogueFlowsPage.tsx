@@ -1,44 +1,31 @@
 
-import { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import DashboardLayout from '@/components/layouts/DashboardLayout';
-
-import SearchToolbar from '@/components/dialogue-flows/SearchToolbar';
-import FlowEditor from '@/components/dialogue-flows/FlowEditor';
-import FlowStats from '@/components/dialogue-flows/FlowStats';
-
-// Declaring flowEditor global for TypeScript
-declare global {
-  interface Window {
-    flowEditor?: {
-      init: () => void;
-    };
-  }
-}
+import DashboardLayout from "@/components/layouts/DashboardLayout";
+import { Button } from "@/components/ui/button";
+import { useEffect } from "react";
+import SearchToolbar from "@/components/dialogue-flows/SearchToolbar";
+import FlowsList from "@/components/dialogue-flows/FlowsList";
 
 const DialogueFlowsPage = () => {
-  // Initialize flow editor when component mounts
+  // Set page title
   useEffect(() => {
-    // Safely access the window object
-    if (typeof window !== 'undefined' && window.flowEditor) {
-      window.flowEditor.init();
-    }
+    document.title = "Dialogue Flows | Vachas AI";
   }, []);
-  
+
   return (
-    <DashboardLayout title="Dialogue Flows" subtitle="Create and manage conversation flows">
-      <SearchToolbar />
-      
-      <Card className="mb-6">
-        <CardHeader className="pb-3">
-          <CardTitle>Sample Conversation Flow</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <FlowEditor />
-        </CardContent>
-      </Card>
-      
-      <FlowStats />
+    <DashboardLayout>
+      <div className="flex flex-col p-6 space-y-6">
+        <div className="flex items-center justify-between">
+          <h1 className="text-3xl font-bold tracking-tight">Dialogue Flows</h1>
+        </div>
+        
+        <p className="text-muted-foreground max-w-4xl">
+          Create and manage conversation flows that your AI agents will follow. Define questions, responses, and branching logic to handle various customer scenarios.
+        </p>
+        
+        <SearchToolbar />
+        
+        <FlowsList />
+      </div>
     </DashboardLayout>
   );
 };

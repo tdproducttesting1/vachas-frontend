@@ -1,69 +1,83 @@
 
-import { Button } from '@/components/ui/button';
-import { useNavigate } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
-import { useState } from 'react';
-import DashboardPreviewImage from './DashboardPreviewImage';
-import AuthModal from '../auth/AuthModal';
-import { useAuth } from '@/hooks/useAuth';
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
-  const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(false);
-  const [showAuthModal, setShowAuthModal] = useState(false);
-  const [authMode, setAuthMode] = useState<'login' | 'register'>('register');
-  const { isAuthenticated } = useAuth();
-
-  const handleGetStarted = () => {
-    if (isAuthenticated) {
-      setIsLoading(true);
-      setTimeout(() => {
-        navigate('/dashboard');
-        setIsLoading(false);
-      }, 500);
-    } else {
-      setAuthMode('register');
-      setShowAuthModal(true);
-    }
-  };
-
-  const handleBookDemo = () => {
-    navigate('/contact');
-  };
-
   return (
-    <>
-      <section className="flex-1 flex flex-col md:flex-row items-center py-12 md:py-24 px-6 md:px-8 max-w-7xl mx-auto">
-        <div className="w-full md:w-1/2 mb-10 md:mb-0 md:pr-10">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            <span className="text-primary">AI Voice</span> Calling Platform for Modern Businesses
-          </h1>
-          <p className="text-xl text-muted-foreground mb-8 max-w-lg">
-            Automate outbound and inbound voice calls with real-time conversational AI, detailed analytics, and seamless CRM integration.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Button size="lg" onClick={handleGetStarted} disabled={isLoading} className="px-8">
-              {isLoading ? 'Loading...' : isAuthenticated ? 'Go to Dashboard' : 'Get Started'}
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-            <Button size="lg" variant="outline" className="px-8" onClick={handleBookDemo}>
-              Book a Demo
-            </Button>
+    <div className="relative overflow-hidden bg-gray-50 py-24 sm:py-32">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="flex flex-col items-center space-y-12 text-center">
+          <div className="space-y-6 md:w-4/5 lg:w-3/5">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">
+              AI-Powered Voice Agents for Smarter Outbound Calling
+            </h1>
+            <p className="text-xl text-gray-600 md:w-4/5 mx-auto">
+              Transform your outbound call campaigns with AI voice agents that sound natural, adapt to conversations, and deliver results.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button asChild size="lg" className="h-12 px-8">
+                <Link to="/auth">Get Started</Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="h-12 px-8 border-gray-300">
+                <Link to="/how-it-works">How It Works</Link>
+              </Button>
+            </div>
+            <p className="text-sm text-gray-500 pt-4">
+              No credit card required to start
+            </p>
+          </div>
+          
+          <div className="relative w-full max-w-4xl aspect-video rounded-xl overflow-hidden shadow-2xl border border-gray-200">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-violet-600 opacity-10"></div>
+            <img
+              src="/placeholder.svg"
+              alt="Vachas AI Dashboard Preview"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <Button variant="secondary" size="lg" className="shadow-lg">
+                <svg className="mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Watch Demo
+              </Button>
+            </div>
+          </div>
+          
+          <div className="flex flex-wrap justify-center gap-x-12 gap-y-6">
+            <div className="flex items-center text-gray-500">
+              <svg className="h-6 w-6 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 12L11 14L15 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2"/>
+              </svg>
+              Natural Voice
+            </div>
+            <div className="flex items-center text-gray-500">
+              <svg className="h-6 w-6 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 12L11 14L15 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2"/>
+              </svg>
+              Dynamic Conversations
+            </div>
+            <div className="flex items-center text-gray-500">
+              <svg className="h-6 w-6 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 12L11 14L15 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2"/>
+              </svg>
+              Custom Scripts
+            </div>
+            <div className="flex items-center text-gray-500">
+              <svg className="h-6 w-6 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 12L11 14L15 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2"/>
+              </svg>
+              Real-time Analytics
+            </div>
           </div>
         </div>
-        <div className="w-full md:w-1/2">
-          <div className="rounded-xl overflow-hidden border shadow-xl">
-            <DashboardPreviewImage />
-          </div>
-        </div>
-      </section>
-      
-      <AuthModal 
-        isOpen={showAuthModal} 
-        onClose={() => setShowAuthModal(false)} 
-        defaultMode={authMode}
-      />
-    </>
+      </div>
+    </div>
   );
 };
 
