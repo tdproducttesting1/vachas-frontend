@@ -1,6 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import DashboardPreviewImage from "./DashboardPreviewImage";
 
 const HeroSection = () => {
   return (
@@ -16,7 +17,7 @@ const HeroSection = () => {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button asChild size="lg" className="h-12 px-8">
-                <Link to="/auth">Get Started</Link>
+                <Link to="/dashboard">Get Started</Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="h-12 px-8 border-gray-300">
                 <Link to="/how-it-works">How It Works</Link>
@@ -29,11 +30,7 @@ const HeroSection = () => {
           
           <div className="relative w-full max-w-4xl aspect-video rounded-xl overflow-hidden shadow-2xl border border-gray-200">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-violet-600 opacity-10"></div>
-            <img
-              src="/placeholder.svg"
-              alt="Vachas AI Dashboard Preview"
-              className="w-full h-full object-cover"
-            />
+            <DashboardPreviewImage />
             <div className="absolute inset-0 flex items-center justify-center">
               <Button variant="secondary" size="lg" className="shadow-lg">
                 <svg className="mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

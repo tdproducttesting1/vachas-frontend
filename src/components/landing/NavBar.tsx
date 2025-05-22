@@ -13,26 +13,15 @@ const NavBar = () => {
   const { isAuthenticated, logout } = useAuth();
 
   const handleGetStarted = () => {
-    if (isAuthenticated) {
-      setIsLoading(true);
-      setTimeout(() => {
-        navigate('/dashboard');
-        setIsLoading(false);
-      }, 500);
-    } else {
-      setAuthMode('register');
-      setShowAuthModal(true);
-    }
+    navigate('/dashboard');
   };
 
   const handleLogin = () => {
-    setAuthMode('login');
-    setShowAuthModal(true);
+    navigate('/dashboard');
   };
 
   const handleSignup = () => {
-    setAuthMode('register');
-    setShowAuthModal(true);
+    navigate('/dashboard');
   };
 
   return (
