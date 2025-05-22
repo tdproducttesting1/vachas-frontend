@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import BookDemoModal from '../modals/BookDemoModal';
+import AuthModal from '../auth/AuthModal';
+import { useAuth } from '@/hooks/useAuth';
 
 interface SiteHeaderProps {
   showDashboardLink?: boolean;
@@ -11,6 +13,19 @@ interface SiteHeaderProps {
 const SiteHeader = ({ showDashboardLink = true }: SiteHeaderProps) => {
   const location = useLocation();
   const [showDemoModal, setShowDemoModal] = useState(false);
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
+  const { isAuthenticated, logout } = useAuth();
+  
+  const handleLogin = () => {
+    setAuthMode('login');
+    setShowAuthModal(true);
+  };
+
+  const handleSignup = () => {
+    setAuthMode('register');
+    setShowAuthModal(true);
+  };
   
   return (
     <>
@@ -64,20 +79,38 @@ const SiteHeader = ({ showDashboardLink = true }: SiteHeaderProps) => {
             <Button variant="outline" onClick={() => setShowDemoModal(true)}>
               Book a Demo
             </Button>
-            {showDashboardLink ? (
-              <Link to="/dashboard">
-                <Button>Dashboard</Button>
-              </Link>
+            
+            {isAuthenticated ? (
+              <>
+                {showDashboardLink && (
+                  <Link to="/dashboard">
+                    <Button>Dashboard</Button>
+                  </Link>
+                )}
+                <Button variant="ghost" onClick={logout}>
+                  Sign out
+                </Button>
+              </>
             ) : (
-              <Link to="/">
-                <Button>Get Started</Button>
-              </Link>
+              <>
+                <Button variant="ghost" onClick={handleLogin}>
+                  Sign In
+                </Button>
+                <Button onClick={handleSignup}>
+                  Sign Up
+                </Button>
+              </>
             )}
           </div>
         </div>
       </header>
       
       <BookDemoModal isOpen={showDemoModal} onOpenChange={setShowDemoModal} />
+      <AuthModal 
+        isOpen={showAuthModal} 
+        onClose={() => setShowAuthModal(false)} 
+        defaultMode={authMode} 
+      />
     </>
   );
 };
