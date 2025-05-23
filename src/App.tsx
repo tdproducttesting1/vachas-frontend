@@ -33,12 +33,6 @@ import DialogueMarketplacePage from "./pages/DialogueMarketplacePage";
 
 const queryClient = new QueryClient();
 
-// Temporarily bypass authentication
-const BypassedProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  return <>{children}</>;
-};
-
-// Original Protected Route (currently not in use)
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { isAuthenticated, isLoading } = useAuth();
   
@@ -75,61 +69,61 @@ const App = () => (
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/careers" element={<CareersPage />} />
             
-            {/* Protected Routes (Bypassed for now) */}
+            {/* Protected Routes */}
             <Route path="/dashboard" element={
-              <BypassedProtectedRoute>
+              <ProtectedRoute>
                 <Dashboard />
-              </BypassedProtectedRoute>
+              </ProtectedRoute>
             } />
             <Route path="/profile" element={
-              <BypassedProtectedRoute>
+              <ProtectedRoute>
                 <ProfilePage />
-              </BypassedProtectedRoute>
+              </ProtectedRoute>
             } />
             <Route path="/campaigns" element={
-              <BypassedProtectedRoute>
+              <ProtectedRoute>
                 <CampaignsPage />
-              </BypassedProtectedRoute>
+              </ProtectedRoute>
             } />
             <Route path="/calls" element={
-              <BypassedProtectedRoute>
+              <ProtectedRoute>
                 <CallsPage />
-              </BypassedProtectedRoute>
+              </ProtectedRoute>
             } />
             <Route path="/analytics" element={
-              <BypassedProtectedRoute>
+              <ProtectedRoute>
                 <AnalyticsPage />
-              </BypassedProtectedRoute>
+              </ProtectedRoute>
             } />
             <Route path="/reports" element={
-              <BypassedProtectedRoute>
+              <ProtectedRoute>
                 <ReportsPage />
-              </BypassedProtectedRoute>
+              </ProtectedRoute>
             } />
             <Route path="/scripts" element={
-              <BypassedProtectedRoute>
+              <ProtectedRoute>
                 <ScriptsPage />
-              </BypassedProtectedRoute>
+              </ProtectedRoute>
             } />
             <Route path="/team" element={
-              <BypassedProtectedRoute>
+              <ProtectedRoute>
                 <TeamPage />
-              </BypassedProtectedRoute>
+              </ProtectedRoute>
             } />
             <Route path="/dialogue-flows" element={
-              <BypassedProtectedRoute>
+              <ProtectedRoute>
                 <DialogueFlowsPage />
-              </BypassedProtectedRoute>
+              </ProtectedRoute>
             } />
             <Route path="/dialogue-marketplace" element={
-              <BypassedProtectedRoute>
+              <ProtectedRoute>
                 <DialogueMarketplacePage />
-              </BypassedProtectedRoute>
+              </ProtectedRoute>
             } />
             <Route path="/dnc-list" element={
-              <BypassedProtectedRoute>
+              <ProtectedRoute>
                 <DNCListPage />
-              </BypassedProtectedRoute>
+              </ProtectedRoute>
             } />
             
             <Route path="*" element={<NotFound />} />
