@@ -1,5 +1,5 @@
 
-import { FeatureCard } from './FeatureCard';
+import FeatureCard from './FeatureCard';
 import { Activity, MessageSquare, Clock, BarChart, Code, Lock, Zap, Headphones } from 'lucide-react';
 
 const FeaturesSection = () => {
@@ -15,51 +15,51 @@ const FeaturesSection = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <FeatureCard 
+            index={0}
             title="Natural Voice Conversations"
             description="AI agents with human-like voices that respond naturally to any conversation path, creating authentic interactions with your customers."
-            icon={Headphones}
           />
           
           <FeatureCard 
+            index={1}
             title="Advanced Conversation Flows"
             description="Create complex, branching conversation paths that adapt in real-time based on customer responses and objections."
-            icon={MessageSquare}
           />
           
           <FeatureCard 
+            index={2}
             title="Time-Saving Automation"
             description="Automate routine outbound calls, follow-ups, and appointment reminders, freeing your team to focus on high-value activities."
-            icon={Clock}
           />
           
           <FeatureCard 
+            index={3}
             title="Comprehensive Analytics"
             description="Detailed insights on call performance, conversion rates, and customer sentiment to continuously optimize your campaigns."
-            icon={BarChart}
           />
           
           <FeatureCard 
+            index={4}
             title="Custom Integration"
             description="Seamlessly integrate with your existing CRM, marketing automation, and business intelligence tools."
-            icon={Code}
           />
           
           <FeatureCard 
+            index={5}
             title="Enterprise-Grade Security"
             description="Bank-level encryption and compliance with major privacy regulations to keep your data and customer information secure."
-            icon={Lock}
           />
           
           <FeatureCard 
+            index={6}
             title="Real-Time Campaign Updates"
             description="Monitor campaign performance as it happens and make adjustments on the fly for optimal results."
-            icon={Activity}
           />
           
           <FeatureCard 
+            index={7}
             title="Lightning-Fast Setup"
             description="Deploy new campaigns in minutes, not days, with our intuitive interface and pre-built templates."
-            icon={Zap}
           />
         </div>
       </div>
