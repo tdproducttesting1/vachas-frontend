@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -15,7 +14,16 @@ const NavBar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleGetStarted = () => {
-    navigate('/dashboard');
+    if (isAuthenticated) {
+      setIsLoading(true);
+      setTimeout(() => {
+        navigate('/dashboard');
+        setIsLoading(false);
+      }, 500);
+    } else {
+      setAuthMode('register');
+      setShowAuthModal(true);
+    }
   };
 
   const handleLogin = () => {

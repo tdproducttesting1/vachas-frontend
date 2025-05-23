@@ -5,7 +5,7 @@ import YoutubeEmbed from "./YoutubeEmbed";
 import { useState } from "react";
 import AuthModal from "../auth/AuthModal";
 import { useAuth } from "@/hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const HeroSection = () => {
   const [showVideo, setShowVideo] = useState(false);
@@ -55,7 +55,7 @@ const HeroSection = () => {
                   Get Started
                 </Button>
                 <Button asChild variant="outline" size="lg" className="h-12 px-8 border-gray-300 shadow-md hover:shadow-lg transition-all duration-300 animate-fade-in hover-scale">
-                  <a href="#how-it-works">How It Works</a>
+                  <Link to="/how-it-works">How It Works</Link>
                 </Button>
               </div>
               <p className="text-sm text-gray-500 pt-4">
