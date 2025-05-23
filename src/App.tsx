@@ -7,7 +7,6 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./hooks/useAuth";
 import useAuth from "./hooks/useAuth";
 import Index from "./pages/Index";
-import AuthPage from "./pages/AuthPage";
 import Dashboard from "./pages/Dashboard";
 import ProfilePage from "./pages/ProfilePage";
 import CampaignsPage from "./pages/CampaignsPage";
@@ -41,7 +40,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   }
   
   if (!isAuthenticated) {
-    return <Navigate to="/auth" replace />;
+    return <Navigate to="/" replace />;
   }
   
   return <>{children}</>;
@@ -57,7 +56,6 @@ const App = () => (
           <Routes>
             {/* Public Pages */}
             <Route path="/" element={<Index />} />
-            <Route path="/auth" element={<AuthPage />} />
             <Route path="/pricing" element={<PricingPage />} />
             <Route path="/blogs" element={<BlogsPage />} />
             <Route path="/docs" element={<DocumentationPage />} />

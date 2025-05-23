@@ -1,7 +1,14 @@
-
 import { Button } from '@/components/ui/button';
+import { useEffect } from 'react';
 
 const VisualEditor = () => {
+  useEffect(() => {
+    // Initialize the flow editor when component mounts
+    if (window.flowEditor && typeof window.flowEditor.init === 'function') {
+      window.flowEditor.init();
+    }
+  }, []);
+
   return (
     <div className="h-[600px] border rounded-md bg-slate-50 relative overflow-hidden" id="flow-editor-container">
       {/* Flow chart visualization - updated to show it's draggable */}
