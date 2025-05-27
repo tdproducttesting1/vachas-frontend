@@ -4,7 +4,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { AuthProvider } from "./hooks/useAuth";
+import { AuthProvider } from "./components/auth/AuthProvider";
+import { ThemeProvider } from "./components/theme/ThemeProvider";
 import useAuth from "./hooks/useAuth";
 import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
@@ -48,87 +49,89 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <BrowserRouter>
-        <AuthProvider>
-          <Toaster />
-          <Sonner />
-          <Routes>
-            {/* Public Pages */}
-            <Route path="/" element={<Index />} />
-            <Route path="/pricing" element={<PricingPage />} />
-            <Route path="/blogs" element={<BlogsPage />} />
-            <Route path="/docs" element={<DocumentationPage />} />
-            <Route path="/how-it-works" element={<HowItWorksPage />} />
-            <Route path="/about" element={<AboutUsPage />} />
-            <Route path="/support" element={<SupportCenterPage />} />
-            <Route path="/privacy" element={<PrivacyPolicyPage />} />
-            <Route path="/terms" element={<TermsOfServicePage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/careers" element={<CareersPage />} />
-            
-            {/* Protected Routes */}
-            <Route path="/dashboard" element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            } />
-            <Route path="/profile" element={
-              <ProtectedRoute>
-                <ProfilePage />
-              </ProtectedRoute>
-            } />
-            <Route path="/campaigns" element={
-              <ProtectedRoute>
-                <CampaignsPage />
-              </ProtectedRoute>
-            } />
-            <Route path="/calls" element={
-              <ProtectedRoute>
-                <CallsPage />
-              </ProtectedRoute>
-            } />
-            <Route path="/analytics" element={
-              <ProtectedRoute>
-                <AnalyticsPage />
-              </ProtectedRoute>
-            } />
-            <Route path="/reports" element={
-              <ProtectedRoute>
-                <ReportsPage />
-              </ProtectedRoute>
-            } />
-            <Route path="/scripts" element={
-              <ProtectedRoute>
-                <ScriptsPage />
-              </ProtectedRoute>
-            } />
-            <Route path="/team" element={
-              <ProtectedRoute>
-                <TeamPage />
-              </ProtectedRoute>
-            } />
-            <Route path="/dialogue-flows" element={
-              <ProtectedRoute>
-                <DialogueFlowsPage />
-              </ProtectedRoute>
-            } />
-            <Route path="/dialogue-marketplace" element={
-              <ProtectedRoute>
-                <DialogueMarketplacePage />
-              </ProtectedRoute>
-            } />
-            <Route path="/dnc-list" element={
-              <ProtectedRoute>
-                <DNCListPage />
-              </ProtectedRoute>
-            } />
-            
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </AuthProvider>
-      </BrowserRouter>
-    </TooltipProvider>
+    <ThemeProvider defaultTheme="system" storageKey="vachas-ui-theme">
+      <TooltipProvider>
+        <BrowserRouter>
+          <AuthProvider>
+            <Toaster />
+            <Sonner />
+            <Routes>
+              {/* Public Pages */}
+              <Route path="/" element={<Index />} />
+              <Route path="/pricing" element={<PricingPage />} />
+              <Route path="/blogs" element={<BlogsPage />} />
+              <Route path="/docs" element={<DocumentationPage />} />
+              <Route path="/how-it-works" element={<HowItWorksPage />} />
+              <Route path="/about" element={<AboutUsPage />} />
+              <Route path="/support" element={<SupportCenterPage />} />
+              <Route path="/privacy" element={<PrivacyPolicyPage />} />
+              <Route path="/terms" element={<TermsOfServicePage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/careers" element={<CareersPage />} />
+              
+              {/* Protected Routes */}
+              <Route path="/dashboard" element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              } />
+              <Route path="/profile" element={
+                <ProtectedRoute>
+                  <ProfilePage />
+                </ProtectedRoute>
+              } />
+              <Route path="/campaigns" element={
+                <ProtectedRoute>
+                  <CampaignsPage />
+                </ProtectedRoute>
+              } />
+              <Route path="/calls" element={
+                <ProtectedRoute>
+                  <CallsPage />
+                </ProtectedRoute>
+              } />
+              <Route path="/analytics" element={
+                <ProtectedRoute>
+                  <AnalyticsPage />
+                </ProtectedRoute>
+              } />
+              <Route path="/reports" element={
+                <ProtectedRoute>
+                  <ReportsPage />
+                </ProtectedRoute>
+              } />
+              <Route path="/scripts" element={
+                <ProtectedRoute>
+                  <ScriptsPage />
+                </ProtectedRoute>
+              } />
+              <Route path="/team" element={
+                <ProtectedRoute>
+                  <TeamPage />
+                </ProtectedRoute>
+              } />
+              <Route path="/dialogue-flows" element={
+                <ProtectedRoute>
+                  <DialogueFlowsPage />
+                </ProtectedRoute>
+              } />
+              <Route path="/dialogue-marketplace" element={
+                <ProtectedRoute>
+                  <DialogueMarketplacePage />
+                </ProtectedRoute>
+              } />
+              <Route path="/dnc-list" element={
+                <ProtectedRoute>
+                  <DNCListPage />
+                </ProtectedRoute>
+              } />
+              
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </AuthProvider>
+        </BrowserRouter>
+      </TooltipProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 
