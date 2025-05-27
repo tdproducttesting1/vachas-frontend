@@ -70,7 +70,7 @@ const DialogueFlowsPage = () => {
         
         <SearchToolbar />
         
-        <FlowsList />
+        <FlowsList onEditFlow={handleEditFlow} />
       </div>
     </DashboardLayout>
   );

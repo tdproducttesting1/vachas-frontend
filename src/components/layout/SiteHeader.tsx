@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ThemeToggle } from '@/components/theme/ThemeToggle';
 import BookDemoModal from '../modals/BookDemoModal';
 import AuthModal from '../auth/AuthModal';
 import { useAuth } from '@/hooks/useAuth';
@@ -77,7 +76,6 @@ const SiteHeader = ({ showDashboardLink = true }: SiteHeaderProps) => {
             </Link>
           </div>
           <div className="flex items-center gap-3">
-            <ThemeToggle />
             <Button variant="outline" onClick={() => setShowDemoModal(true)}>
               Book a Demo
             </Button>
