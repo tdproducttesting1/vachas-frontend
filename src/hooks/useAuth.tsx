@@ -73,18 +73,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     // Set up auth state listener
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, currentSession) => {
-        console.log('Auth state changed:', event, currentSession?.user?.email);
         setSession(currentSession);
         setUser(currentSession?.user ?? null);
 
         if (currentSession?.user) {
           // Fetch profile when auth state changes and we have a user
+          // Note: Using setTimeout to avoid deadlocks in Supabase's auth state handling
           setTimeout(async () => {
             const profile = await fetchProfile(currentSession.user.id);
-            if (profile) {
-              setProfile(profile);
-              console.log('Profile loaded:', profile);
-            }
+            setProfile(profile);
           }, 0);
         } else {
           setProfile(null);
@@ -102,10 +99,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       if (currentSession?.user) {
         // Fetch profile on initial load
         fetchProfile(currentSession.user.id).then(profile => {
-          if (profile) {
-            setProfile(profile);
-            console.log('Initial profile loaded:', profile);
-          }
+          setProfile(profile);
         });
       }
       
@@ -141,7 +135,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         description: error.message,
         variant: "destructive",
       });
-      throw error;
     } finally {
       setIsLoading(false);
     }
@@ -165,7 +158,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         description: error.message,
         variant: "destructive",
       });
-      throw error;
     }
   };
 
@@ -192,6 +184,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         description: "Your account has been created successfully.",
       });
       
+      // The row level security and trigger will handle profile creation
       navigate('/dashboard');
     } catch (error: any) {
       toast({
@@ -199,7 +192,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         description: error.message,
         variant: "destructive",
       });
-      throw error;
     } finally {
       setIsLoading(false);
     }
